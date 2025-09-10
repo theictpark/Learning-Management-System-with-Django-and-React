@@ -1,0 +1,26 @@
+pipenv shell
+pipenv install Django
+django-admin startproject project 
+pipenv install -r requirements.txt [a list of packages]
+	pip install pip-upgrader
+	pip-upgrade
+pipenv run pip freeze
+
+python manage.py startapp core, userauths, api
+
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # add your app here
+    'core',  
+    'userauths',  
+    'api',  
+]
+
+python manage.py runserver
