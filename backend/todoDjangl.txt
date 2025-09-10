@@ -1,6 +1,7 @@
+### Setup, Installation, Configuration 
 pipenv shell
 pipenv install Django
-django-admin startproject project 
+django-admin startproject project .
 pipenv install -r requirements.txt [a list of packages]
 	pip install pip-upgrader
 	pip-upgrade
@@ -24,3 +25,30 @@ INSTALLED_APPS = [
 ]
 
 python manage.py runserver
+
+
+### Create Super User, Configuration Jazzmin Admin UI
+pipenv shell
+python manage.py runserver
+python manage.py migrate
+python manage.py createsuperuser (with name, email, password)
+
+INSTALLED_APPS = [
+    'jazzmin',
+
+    'django.contrib.admin',
+    [...]
+]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Learning Management System Admin", 
+    "site_header": "Learning Management System with Django and React",
+    "site_brand": "the ict park",
+    "welcome_sign": "Welcome to the Learning Management System",
+    "copyright": "the ict park",
+    "show_ui_builder": True
+}
+
+JAZZMIN_UI_TWEAKS = {
+
+}
