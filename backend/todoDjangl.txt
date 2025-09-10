@@ -27,7 +27,7 @@ INSTALLED_APPS = [
 python manage.py runserver
 
 
-### Create Super User, Configuration Jazzmin Admin UI
+### Create SuperUser, Configuration Jazzmin Admin UI
 pipenv shell
 python manage.py runserver
 python manage.py migrate
@@ -52,3 +52,24 @@ JAZZMIN_SETTINGS = {
 JAZZMIN_UI_TWEAKS = {
 
 }
+
+
+### Config Media, Static & template
+
+import os
+'DIRS': [os.path.join(BASE_DIR, 'templates')],
+Create "templates" in root directory 
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = BASE_DIR / 'templates'
+MEDIA_URL = '/Media/'
+MEDIA_ROOT = BASE_DIR / 'Media'
+Create "static" in root directory 
+
+
+### Config urls.py for static
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
