@@ -106,3 +106,21 @@ def save_user_profile(sender, instance, **kwargs):
     
 post_save.connect(create_user_profile, sender=CustomUser)
 post_save.connect(save_user_profile, sender=CustomUser)
+
+
+### models Serialize
+create a new file called serializer.py in api directory
+
+add code 
+from rest_framework import serializers
+from userauths.models import CustomUser, UserProfile
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = '__all__'
