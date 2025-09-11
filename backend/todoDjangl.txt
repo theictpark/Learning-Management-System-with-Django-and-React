@@ -73,3 +73,21 @@ from django.conf.urls.static import static
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+### Customize user and profile 
+
+Create CustomUser and UserProfile models in models.py
+Register in admin.py 
+
+add CustomUser in settings.py 
+    AUTH_USER_MODEL = 'userauths.CustomUser'
+
+python manage.py migrations
+python manage.py migrate
+python manage.py createsuperuser (with email, name, password)
+    after migrations [comment]
+        #'jazzmin',
+        #'django.contrib.admin',
+        #path('admin/', admin.site.urls),
+    before migrations [uncomment]    
