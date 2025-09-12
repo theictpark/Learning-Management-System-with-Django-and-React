@@ -124,3 +124,18 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
         fields = '__all__'
+
+### JWT token Authentication 
+
+Add third party apps in INSTALLED_APPS = []
+'rest_framework',
+'rest_framework.simplejwt.token_blacklist',
+'corsheaders',
+
+Add middleware in MIDDLEWARE = []
+'corsheaders.middleware.CorsMiddleware',
+
+Add SIMPLE_JWT = {}
+from https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html#revoke-token-claim
+
+Add CORS_ALLOW_ALL_ORIGINS = True
