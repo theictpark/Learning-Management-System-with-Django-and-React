@@ -18,8 +18,6 @@ django-cors-headers = "*"
 django-jazzmin = "*"
 django-storages = "*"
 django-ckeditor-5 = "*"
-djangorestframework = "*"
-djangorestframework-simplejwt = "*"
 drf-yasg = "*"
 environs = "*"
 gunicorn = "*"
@@ -45,6 +43,8 @@ typing-extensions = "*"
 tzdata = "*"
 uritemplate = "*"
 urllib3 = "*"
+djangorestframework = "*"
+djangorestframework-simplejwt = "*"
 
 [dev-packages]
 

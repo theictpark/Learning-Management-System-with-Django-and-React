@@ -139,3 +139,40 @@ Add SIMPLE_JWT = {}
 from https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html#revoke-token-claim
 
 Add CORS_ALLOW_ALL_ORIGINS = True
+
+
+### Login serializer 
+Add 
+from rest_framework_simplejwt.serializer import TokenObtainPairSerializer in serializer.py of api
+
+Create class serializer.py of api
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        # Add custom claims
+        token['full_name'] = user.full_name
+        token['email'] = user.email
+        token['username'] = user.username
+        return token
+
+Add 
+from api import serializer as api_serializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+    in views of api
+
+also add in views of api
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = api_serializer.CustomTokenObtainPairSerializer
+
+create urls.py in api and add
+from api import views as api_views
+from django.urls import path
+
+urlpatterns = [
+    path('user/token/', api_views.CustomTokenObtainPairView.as_view(), name='custom_token_obtain_pair'),
+]
+
+also add in urls.py of project
+from django.urls import path, include
+path('api/v1/', include('api.urls')),
